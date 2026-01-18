@@ -46,12 +46,15 @@ const Navbar = () => {
             {/* Logo */}
             <a href="#" className="flex items-center space-x-3">
               <span className="text-xl font-serif font-bold tracking-wide text-gradient-gold">
-                Aeternum</span>MUN
+                Aeternum
+              </span>
+              <span className="text-xl font-serif font-bold tracking-wide text-gradient-gold">
+                MUN
               </span>
               <span className="text-[10px] font-mono text-muted-foreground tracking-[0.2em] uppercase">
                 2026
-               </span>
-               </a>
+              </span>
+            </a>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-12">
@@ -64,7 +67,7 @@ const Navbar = () => {
                   {link.name}
                 </button>
               ))}
-              <a 
+              <a
                 href="https://forms.google.com"
                 target="_blank"
                 rel="noopener noreferrer"
