@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { name: 'About', href: '#about' },
-  { name: 'Committees', href: '#committees' },
-  { name: 'Message', href: '#message' },
-  { name: 'FAQ', href: '#faq' },
+  { name: "About", href: "#about" },
+  { name: "Committees", href: "#committees" },
+  { name: "Message", href: "#message" },
+  { name: "FAQ", href: "#faq" },
 ];
 
 const Navbar = () => {
@@ -17,25 +17,27 @@ const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
     setIsMobileMenuOpen(false);
   };
 
   return (
     <>
+      {/* Navbar */}
       <motion.nav
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
           isScrolled
-            ? 'bg-background/80 backdrop-blur-lg border-b border-border/50'
-            : 'bg-transparent'
+            ? "bg-background/80 backdrop-blur-lg border-b border-border/50"
+            : "bg-transparent"
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -44,12 +46,9 @@ const Navbar = () => {
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <a href="#" className="flex items-center space-x-3">
+            <a href="#" className="flex items-center space-x-2">
               <span className="text-xl font-serif font-bold tracking-wide text-gradient-gold">
-                Aeternum
-              </span>
-              <span className="text-xl font-serif font-bold tracking-wide text-gradient-gold">
-                MUN
+                Aeternum <span className="ml-1">MUN</span>
               </span>
               <span className="text-[10px] font-mono text-muted-foreground tracking-[0.2em] uppercase">
                 2026
@@ -67,6 +66,7 @@ const Navbar = () => {
                   {link.name}
                 </button>
               ))}
+
               <a
                 href="https://forms.google.com"
                 target="_blank"
@@ -77,10 +77,11 @@ const Navbar = () => {
               </a>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Toggle */}
             <button
               className="md:hidden text-foreground"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+              aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -91,7 +92,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <motion.div
         className={`fixed inset-0 z-30 bg-background/95 backdrop-blur-lg md:hidden ${
-          isMobileMenuOpen ? 'pointer-events-auto' : 'pointer-events-none'
+          isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
         }`}
         initial={{ opacity: 0 }}
         animate={{ opacity: isMobileMenuOpen ? 1 : 0 }}
@@ -113,6 +114,7 @@ const Navbar = () => {
               {link.name}
             </motion.button>
           ))}
+
           <motion.a
             href="https://forms.google.com"
             target="_blank"
@@ -123,7 +125,10 @@ const Navbar = () => {
               opacity: isMobileMenuOpen ? 1 : 0,
               y: isMobileMenuOpen ? 0 : 20,
             }}
-            transition={{ duration: 0.3, delay: navLinks.length * 0.1 }}
+            transition={{
+              duration: 0.3,
+              delay: navLinks.length * 0.1,
+            }}
           >
             Register Now
           </motion.a>
