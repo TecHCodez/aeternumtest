@@ -1,17 +1,19 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Quote } from 'lucide-react';
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { Quote } from "lucide-react";
 
 const SecGenMessage = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const ref = useRef<HTMLDivElement | null>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="message" className="relative py-24 lg:py-32 overflow-hidden">
+    <section
+      id="message"
+      className="relative py-24 lg:py-32 overflow-hidden"
+    >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/20 to-background" />
-      
+
       {/* Decorative circles */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-primary/5 rounded-full" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-primary/10 rounded-full" />
@@ -45,12 +47,17 @@ const SecGenMessage = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            "Aeternum</span>MUN stands as a platform where ideas are challenged, diplomacy is refined, 
-            and leadership is forged. As delegates engage with complex global issues, we 
-            encourage integrity, collaboration, and vision. We look forward to welcoming you 
-            to a conference rooted in{' '}
-            <span className="text-gradient-gold">excellence</span> and{' '}
-            <span className="text-gradient-gold">purpose</span>."
+            “
+            <span className="text-gradient-gold font-semibold">
+              Aeternum MUN
+            </span>{" "}
+            stands as a platform where ideas are challenged, diplomacy is refined,
+            and leadership is forged. As delegates engage with complex global
+            issues, we encourage integrity, collaboration, and vision. We look
+            forward to welcoming you to a conference rooted in{" "}
+            <span className="text-gradient-gold">excellence</span> and{" "}
+            <span className="text-gradient-gold">purpose</span>.
+            ”
           </motion.blockquote>
 
           {/* Signature */}
@@ -60,11 +67,13 @@ const SecGenMessage = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
           >
             <div className="w-16 h-px bg-primary mx-auto mb-6" />
+
             <p className="font-signature text-3xl text-primary mb-2">
               Secretary General
             </p>
+
             <p className="text-sm font-mono tracking-[0.2em] uppercase text-muted-foreground">
-              Aeternum</span>MUN 2026
+              Aeternum MUN 2026
             </p>
           </motion.div>
         </motion.div>
